@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/login.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="/">
+                <div class="logo">
+                    <i class="uil uil-layer-group"></i>
+                    <h2 class="thetext">Forum 01</h2>
+                </div>
+            </a>
+            <div class="options">
+                <div>
+                    <form action="/register" method="POST">
+                        <input type="submit" class="button signin" name="submit" value="Sign Up">
+                    </form>
+                </div>
+                <div>
+                    <form action="/login" method="POST">
+                        <input type="submit" class="button register" name="submit" value="Sign In">
+                    </form>
+                </div>
+                <!-- <a href="/templates/login.html" >Sign IN</a>
+                <a href="/templates/register.html" >Register</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-container">
+        <div class="login-decoration-container">
+            <div class="human">
+                <h1>Sign In To Join Us</h1>
+                <!-- <img src="/static/images/pexels-andrea-piacquadio-3764402.jpg" alt="" style="background-size: contain; width: 100%; height: 100%;"> -->
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="login-card-container">
+            <div class="login-card">
+                <form class="login-card-form" action="/" method="POST">
+                    <div class="form-item email-field">
+                        <i class="uil uil-user user-icon"></i>
+                        <input type="text" name="Email" placeholder="Email" class="email-input" id="email-input" required>
+                    </div>
+                    <div class="form-item password-field">
+                        <div class="password-overlay" id="password-overlay"> </div>
+                        <i class="uil uil-lock password-lock-icon"></i>
+                        <input type="password" name="Mdp" placeholder="Password..." class="password-input" id="password-input" required>
+                        <i class="uil uil-eye-slash toggle-visibility-icon"></i>
+                    </div>
+                    <div>
+                        {{range .}}
+                        <p>{{.Error}}</p>
+                        {{end}}
+                    </div>
+                    <!-- <div class="form-item-other">
+                        <a href="#">I forgot my password!</a>
+                    </div> -->
+                    <input class="thesignin" type="submit" name="submit" value="Sign In">
+                </form>
+                <!-- <div class="login-card-footer">
+                    Don't have an account? <a href="#">Create a free account.</a>
+                </div> -->
+            </div>
+            <div class="login-card-social">
+                <!-- <div class="others">Other Sign-In Options</div> -->
+                <!-- <div class="login-card-social-btns">
+                    <a href="#" class="animate__animated animate__bounce animate__infinite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" preserveAspectRatio="xMidYMid" viewBox="0 0 256 262" id="google">
+                            <path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027">
+                            </path>
+                            <path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1">
+                            </path>
+                            <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782">
+                            </path>
+                            <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="#" class="animate__animated animate__bounce animate__infinite">
+                        <svg class="apple" xmlns="http://www.w3.org/2000/svg" width="50" height="50" data-name="Layer 1" viewBox="0 0 24 24" id="apple">
+                            <path d="M14.94,5.19A4.38,4.38,0,0,0,16,2,4.44,4.44,0,0,0,13,3.52,4.17,4.17,0,0,0,12,6.61,3.69,3.69,0,0,0,14.94,5.19Zm2.52,7.44a4.51,4.51,0,0,1,2.16-3.81,4.66,4.66,0,0,0-3.66-2c-1.56-.16-3,.91-3.83.91s-2-.89-3.3-.87A4.92,4.92,0,0,0,4.69,9.39C2.93,12.45,4.24,17,6,19.47,6.8,20.68,7.8,22.05,9.12,22s1.75-.82,3.28-.82,2,.82,3.3.79,2.22-1.24,3.06-2.45a11,11,0,0,0,1.38-2.85A4.41,4.41,0,0,1,17.46,12.63Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="#" class="animate__animated animate__bounce animate__infinite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="64" data-name="Layer 1" viewBox="0 0 128 128" id="linkedin">
+                            <rect width="128" height="128" fill="#ffffff00" rx="24" ry="24">
+                            </rect>
+                            <path fill="#000" d="M92 32H36a4 4 0 0 0-4 4v56a4 4 0 0 0 4 4h56a4 4 0 0 0 4-4V36a4 4 0 0 0-4-4ZM52 86H42V56h10Zm-5-34a6 6 0 1 1 6-6 6 6 0 0 1-6 6Zm39 34H76V66c0-1.66-2.24-3-5-3-4 0-5 5.34-5 7v16H56V56h10v7c0-5 4.48-7 10-7a10 10 0 0 1 10 10Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Ajoutez ce code JavaScript après votre formulaire HTML -->
+    <!-- <script>
+    // Sélectionnez les éléments HTML pertinents
+    const passwordInput = document.getElementById("password-input");
+    const toggleVisibilityIcon = document.querySelector(".toggle-visibility-icon");
+    const overlay = document.getElementById("password-overlay");
+
+    // Ajoutez un gestionnaire d'événements au clic sur l'icône de visibilité
+    toggleVisibilityIcon.addEventListener("click", () => {
+        if (passwordInput.type === "password") {
+            // Si le champ de mot de passe est masqué, le rendre visible
+            passwordInput.type = "text";
+        } else {
+            // Sinon, le masquer
+            passwordInput.type = "password";
+        }
+        overlay.classList.toggle("overlay-content");
+    });
+</script> -->
+
+
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

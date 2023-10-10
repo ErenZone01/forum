@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <title>Forum 01</title>
+    <script src="../js/comment.js"></script>
+</head>
+
+<body>
+    <!-- ======================HEADER========================== -->
+    <nav>
+        <div class="container">
+            <a href="/">
+                <div class="logo">
+                    <i class="uil uil-layer-group"></i>
+                    <h2 style="text-decoration: none;">Forum 01</h2>
+                </div>
+            </a>
+           
+            <div class="options">
+                <div class="{{if gt (len .Utilisateur) 0}}hidden{{end}}">
+                    <form action="/register" method="POST">
+                        <input type="submit" class="button signin" name="submit" value="Sign Up">
+                    </form>
+                </div>
+                <div class="{{if gt (len .Utilisateur) 0}}hidden{{end}}">
+                    <form action="/login" method="POST">
+                        <input type="submit" class="button signin" name="submit" value="Sign In">
+                    </form>
+                </div>
+                <div class="{{if eq (len .Utilisateur) 0}}hidden{{end}}">
+                    <form action="/decon" method="POST">
+                        <input type="submit" class="button signin" name="submit" value="Deconnection">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================SECTION======================== -->
+    <section class="body-container">
+        <div class="haut">
+            <div class="first-square">
+                <div class="infos-profile">
+                    <div class="username-infos">
+                        <div class="username-img">
+                            <img src="/static/images/avatar.jpeg" width="38" height="38" style="border-radius: 50%;" alt="">
+                        </div>
+                        <div class="username">
+                            {{range .Utilisateur}}
+                            <span>{{.Username}}</span>
+                            <p>{{.Username}}</p>
+                            {{end}}
+                        </div>
+                    </div>
+                    <div class="{{if eq (len .Utilisateur) 0}}hidden{{end}}">
+                        <div class="username-stats">
+                            <div class="stat followers {{if eq (len .Mylike) 0}} hidden{{end}}">
+                                <h5>{{range .Mylike}} {{.}}  {{end}}</h5>
+                                <span>Liked</span>
+                            </div>
+                            <div class="stat following">
+                                <h5>{{len .MyCom}}</h5>
+                                <span>Com</span>
+                            </div>
+                            <div class="stat posts">
+                                <h5>{{len .MyPost}}</h5>
+                                <span>Post</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="{{if gt (len .Utilisateur) 0}}hidden{{end}}">
+                        <div class="alarme">
+                            <h5>You're not connected!</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="test2">
+            </div>
+            <div class="fifth-square">
+                    <!-- fifth-square -->
+                    <div class="Post-elements">
+                        <!-- <form action="/" method="POST">   -->
+                        <form action="/" method="POST">
+                                <!-- <img src="/static/img/avatar.jpeg" width="38" height="38" style="border-radius: 50%;" alt=""> -->
+                                <div class="share-elements">
+                                    <div class="post-input">
+                                        <input type="text" class="titre" value="" name="title" placeholder="Title" required>
+                                    </div>
+                                    <div class="post-inpu">
+                                        <textarea type="text" name="body" placeholder="What's on your mind" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="cate"><span>Categories </span></div>
+                            <div class="Post-options">
+                                <div class="options">
+                                    <div class="options-img">
+                                        <label for="l1">
+                                            <i class="uil uil-football"></i>
+                                            <input type="checkbox" id="l1" name="categorie1" checked value="Sport">
+                                                <b>Sport</b>
+                                            </label>
+                                    </div>
+                                    <div class="options-attachement">
+                                        <label for="l2">
+                                            <i class="uil uil-music"></i>
+                                            <input type="checkbox" id="l2" name="categorie2" value="Musique">
+                                                <b>Musique</b> 
+                                            </label>
+                                    </div>
+                                    <div class="options-video">
+                                        <label for="l3">
+                                            <i class="uil uil-book-reader"></i>
+                                            <input type="checkbox" id="l3" name="categorie3" value="Manga">
+                                                <b>Manga</b> 
+                                            </label>
+                                    </div>
+                                    <div class="options-hashtag">
+                                        <label for="l4">
+                                            <i class="uil uil-medkit"></i>
+                                            <input type="checkbox" id="l4" name="categorie4" value="Sante">
+                                                <b>Sante</b> 
+                                            </label>
+                                    </div>
+                                    <div class="options-mention">
+                                        <label for="l5">
+                                            <i class="uil uil-palette"></i>
+                                            <input type="checkbox" id="l5" name="categorie5" value="Arts">
+                                                <b>Arts</b> 
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-shar">
+                                <input type="submit" class="buttone" name="submit" value="Post">
+                            </div>
+        
+                        </form>
+                        <!-- </form> -->
+                    </div>
+            </div>
+            <div class="sixth-square">
+                <div class="view-post-container">
+                        {{range $postIndex, $Post := .Posts}}
+                            <div class="view-post">
+                                <div class="post-header" id="P {{$Post.Id}}">
+                                    <div class="post-username">
+                                        <img src="/static/images/avatar.jpeg" width="38" height="38" style="border-radius: 50%;" alt="">
+                                        <div class="post-user-infos">
+                                            {{range $useri, $user := $.Users}}
+                                            <span style="font-size: 28px;color: black;margin-left: 10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                                                    {{if eq $Post.Users_id $user.Id}}
+                                                        {{$user.Username}}
+                                                    {{end}}
+                                                </span> {{end}}
+                                            <p style="font-size: 10px;color: blue;margin-left: 10px;margin-top:10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{$Post.CreatedPost}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-container">
+                                    <div class="post-titre">
+                                        <div class="post-text">
+                                            <p style="font-size: 25px;color: black;margin-left: 10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{$Post.Title}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="post-text">
+                                        <p style="font-size: 18px;color: black;margin-left: 10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;margin-top: 15px;">{{$Post.Body}}</p>
+                                    </div>
+                                    <div class="post-img">
+                                        <img src="/static/img/post1.png" alt="">
+                                        <img src="/static/img/post2.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="post-body {{if eq .Filter 1}} hidden{{end}}">
+                                        <div class="appreciations" >
+                                            <div class="comment appreciation" >
+                                                <button onclick="afficher('{{$Post.Id}}');">
+                                                    <i class="uil uil-comment-dots" style="font-size: 23px; color: black;"></i>
+                                                </button>
+                                                <span style="font-size: 23px; color: black;">{{$Post.N_com}}</span>
+                                                <span style="font-size: 23px;color: black;">comments</span>
+                                            </div>
+                                            <form action="/" method="POST">
+                                                <div class="like appreciation">
+                                                    <input type="text" style="display: none;" name="id_PostL" value="{{$Post.Id}}">
+                                                    <!-- <input type="submit" class="likePost" name="submit" value="likePost"> -->
+                                                    
+                                                    <button type="submit" value="likePost" name="submit" style="font-size: 23px; color: black;"><i class="uil uil-thumbs-up"></i></button>
+                                                    <span style="font-size: 23px; color: black;">{{$Post.N_like}}</span>
+                                                </div>
+                                            </form>
+                                            <form action="/" method="POST">
+                                                <div class="dislike appreciation" id="{{$Post.Id}}">
+                                                    <input type="text" style="display: none;" name="id_PostD" value="{{$Post.Id}}">
+                                                    <button type="submit" value="dislikePost" name="submit" style="font-size: 23px; color: black;"><i class="uil uil-thumbs-down"></i>
+                                                    </button>
+                                                    <span style="font-size: 23px; color: black;">{{$Post.N_dislike}}</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app" style="display: none;" id="com {{$Post.Id}}">
+                                    <div class="container-comment {{if eq .Filter 1}} hidden{{end}}">
+                                        <div class="row">
+                                            <div class="col-6 controller">
+                                                <form action="/" method="POST">
+                                                    <textarea type="text" name="Comment" class="input" placeholder="Write a comment" required></textarea>
+                                                    <!-- <input class='primaryContained button float-right' type="submit" name="submit" value="Com">Add Comment</input> -->
+                                                    <input type="text" name="id" style="display: none;" value="{{$Post.Id}}">
+                                                    <!-- <input type="text" name="Comment" value="" placeholder="Comment" required> -->
+                                                    <input class="primaryContained float-right" type="submit" name="submit" value="Add Comment">
+                                                </form>
+                                            </div>
+                                            <!-- End col -->
+                                        </div>
+                                        <!--End Row -->
+                                        <div class="row">
+                                            {{range $comIndex, $Com := $.Coms}} {{if eq $Com.Posts_id $Post.Id}} {{range $useri, $User := $.Users}} {{if eq $User.Id $Com.Users_id}}
+                                            <div class="col-6" id="C {{$Com.Id}}">
+                                                <div class="comment">
+                                                    <img src="/static/images/avatar.jpeg" width="38" height="38" style="border-radius: 50%;" alt="">
+                                                    <span style="font-weight: bolder;font-size: 24px;">{{$User.Username}}</span>
+                                                    <br><br>
+                                                    <p style="font-size: 20px;color: black;margin-left: 10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">{{$Com.Body}}</p>
+                                                    <br>
+                                                </div>
+                                                <!--End Comment-->
+                                                <form action="/" method="POST">
+                                                    <div class="like appreciation">
+                                                        <input type="text" style="display: none;" name="id_ComL" value="{{$Com.Id}}">
+                                                        <button type="submit" value="likeCom" name="submit" > <i class="uil uil-heart"></i></button>
+                                                        <span >{{$Com.N_like}}</span>
+                                                    </div>
+                                                    <div class="dislike appreciation">
+                                                        <input type="text" style="display: none;" name="id_ComD" value="{{$Com.Id}}">
+                                                        <button type="submit" value="dislikeCom" name="submit" >                                            <i class="uil uil-thumbs-down"></i>
+            
+                                                        </button>
+                                                        <span>{{$Com.N_dislike}}</span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <br>
+                                            <hr>
+                                            <br>
+                                            <!--End col -->
+                                            {{end}} {{end}} {{end}} {{end}}
+                                        </div>
+                                        <!-- End row -->
+                                    </div>
+                                    <!--End Container -->
+                                </div>
+                                <!-- end App -->
+                            </div>
+                        {{end}}
+                </div>
+            </div>
+            <div class="forth-square">
+                <div class="special">
+                    <br>
+                    <div>
+                        <h1>
+                            <span>Filter: </span>
+                            <i class="fas fa-filter"></i>
+                        </h1>
+                        
+                    </div>
+                    <hr>
+                    <div class="navigation">
+                        <div class="filbycat">
+                            <h4>Filter by Categories</h4>
+                        </div>
+                        <form action="/" method="POST" >
+                            <ul style="text-decoration: none; list-style: none;align-items: center;justify-content: center;text-align: center;">
+                                <li>
+                                    <label for="A1">
+                                        <i class="uil uil-football"></i>
+                                        <b>Sport</b>
+                                        <input type="radio" id="A1" name="categorie" value="Sport">
+                                    </label>
+                                </li>
+                                <li> <label for="A2">
+                                <i class="uil uil-music"></i>
+                                <b>Music </b>
+                                <input type="radio" id="A2" name="categorie" value="Musique">
+                                </label></li>
+                                <li><label for="A3">
+                                <i class="uil uil-book-reader"></i>
+                                <b>Manga</b> 
+                                <input type="radio" id="A3" name="categorie" value="Manga">
+                                </label></li>
+                                <li><label for="A4">
+                                <i class="uil uil-medkit"></i>
+                                <b>Sante</b> 
+                                <input type="radio" id="A4" name="categorie" value="Sante">
+                                </label></li>
+                                <li><label for="A5">
+                                <i class="uil uil-palette"></i>
+                                <b>Arts  </b> 
+                                <input type="radio" id="A5" name="categorie" value="Arts">
+                                </label></li>
+                            </ul>
+                            <br>
+                            <input type="submit" name="submit" value="Filter by category" id="roro"/>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="navigation">
+                        <div class="filbycat">
+                            <h4>Filter by Liked Posts</h4>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div class="page-container">
+                            <div class="pages">
+                                <form action="/" method="POST">
+                                    <input type="submit" name="submit" value="Filter by Like" class="sub">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="navigation">
+                        <div style="display: flex;align-items: center;justify-content: center;">
+                            <br><br><br>
+                            <h4>Filter by Created Posts</h4>
+                        </div>
+                        <div class="page-container">
+                            <div class="pages">
+                                <form action="/" method="POST">
+                                    <input type="submit" name="submit" value="Filter by Created Post" class="sub">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </section>
+    <script src="../js/comment.js"></script>
+</body>
+
+</html>
+
+</html>

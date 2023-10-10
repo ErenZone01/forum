@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/register.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/">
+                <div class="logo">
+                    <i class="uil uil-layer-group"></i>
+                    <h2>Forum 01</h2>
+                </div>
+            </a>
+            <div class="options">
+                <div>
+                    <form action="/register" method="POST">
+                        <input type="submit" class="button signin" name="submit" value="Sign Up">
+                    </form>
+                </div>
+                <div>
+                    <form action="/login" method="POST">
+                        <input type="submit" class="button register" name="submit" value="Sign In">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-container">
+        <div class="login-decoration-container">
+            <div class="human">
+                <h1>Sign Up To Join Us</h1>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    
+        <div class="login-card-container">
+            <div class="login-card">
+                <form class="login-card-form" action="/" method="POST">
+                    <div class="form-item email-field">
+                        <i class="uil uil-user user-icon"></i>
+                        <input type="text" name="Username" placeholder="username" class="email-input" id="email-input"
+                        required>
+                    </div>
+                    <div class="form-item email-field">
+                        <i class="uil uil-envelope-alt user-icon"></i>
+                        <input type="text" name="Email" placeholder="Email" class="email-input" id="email-input"
+                        required>
+                    </div>
+                    <div class="form-item password-field">
+                        <div class="password-overlay" id="password-overlay"> </div>
+                        <i class="uil uil-lock password-lock-icon"></i>
+                        <input type="password" name="Mdp" placeholder="password..." class="password-input" id="password-input"
+                        required>
+                        <i class="uil uil-eye-slash toggle-visibility-icon"></i>
+                    </div>
+                    <div class="form-item confirmation-password-field">
+                        <div class="confirmation-password-overlay" id="confirmation-password-overlay"> </div>
+                        <i class="uil uil-lock password-lock-icon"></i>
+                        <input type="password" name="confirmMdp" placeholder="Confirmation password..." class="confirmation-password-input" id="confirmation-password-input"
+                        required>
+                        <i class="uil uil-eye-slash toggle-visibility-secondicon"></i>
+                    </div>
+                    <div>
+                        {{range .}}
+                        <p>{{.Error}}</p>
+                        {{end}}
+                    </div>
+                    <input class="sasa" name="submit" value="Sign Up" type="submit" />
+                </form>
+              
+                
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/index.js"></script>
+</body>
+</html>

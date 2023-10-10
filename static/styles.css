@@ -1,0 +1,23 @@
+:root {
+    --height-button: 2rem;
+    --color-button: #f7f7f7;
+    --color-secondary: #a7a7a7;
+
+    /*taille des boutons*/
+    --mb-1: 2rem;
+    --mb-2: 2rem;
+
+    /*taille des boutons*/
+    --padding-1: 2rem;
+    --padding-2: 1.5rem;
+
+    /*taille des boutons*/
+    --width-1: 80%;
+    --width-2: 100%;
+    --width-3: 113%;
+
+    --height-1: 80%;
+
+    /*taille des boutons*/
+    --gap-1: 0.625rem;
+}

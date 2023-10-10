@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Poppins&display=swap');
+
+:root {
+    --height-button: 2rem;
+    --color-button: hsl(0, 0%, 97%);
+    --color-secondary: #a7a7a7;
+
+    /*taille des boutons*/
+    --mb-1: 2rem;
+    --mb-2: 2rem;
+
+    /*taille des boutons*/
+    --padding-1: 2rem;
+    --padding-2: 1.5rem;
+
+    /*taille des boutons*/
+    --width-1: 80%;
+    --width-2: 100%;
+    --width-3: 113%;
+
+    --height-1: 80%;
+
+    /*taille des boutons*/
+    --gap-1: 0.625rem;
+
+    --first-color: hsl(174, 77%, 44%);
+    --text-color: hsl(174, 10%, 25%);
+    --white-color: hsl(0, 0%, 100%);
+    --body-color: hsl(174, 53%, 89%);
+    --container-color: hsla(240, 100%, 50%, 0.712);
+    --container-color-light: hsla(240, 100%, 57%, 0.836);
+
+    --animate-duration: 800ms;
+    --animate-delay: 0.9s;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-color: #f7f7f7;
+}
+
+nav{
+    width: 100%;
+    background-color: white;
+    padding: 0.7rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: black;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    height: 8vh;
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i{
+    background-color: var(--container-color);
+    padding: 0.3rem 0.4rem;
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+    border-radius: 10px;
+}
+.thetext{
+    font-size: 30px;
+    margin-right: 8px;
+}
+
+.search-bar{
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 0.6rem 0.7rem;
+    margin-left: -20%;
+}
+
+.search-bar input[type="search"]{
+    background: transparent;
+    width: 360px;
+    margin-left: 0rem;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.search-bar input[type="search"]:focus-visible{
+    outline: none;
+}
+/* ================= GESTION DES BOUTONS SIGN IN ET SIGN UP (REGISTER)==================================== */
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.options a{
+    text-decoration: none;
+}
+
+.options .button{
+    background-color: #f7f7f7;
+    padding: 0.6rem 0.7rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.options .signin, .options .register{
+    background-color: hsla(240, 100%, 57%, 0.836);
+    color: white;
+    font-family: 'poppins', sans-serif;
+    
+}
+
+.options .button:hover{
+    background-color: white;
+    color: hsla(240, 100%, 57%, 0.836);
+    padding: 0.6rem 0.7rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    gap: 10px;
+    margin-bottom: 5px;
+    border: 2px solid blue;
+    transition: .55s;
+}
+
+
+
+
+form{
+    /* margin-top: 100px; */
+}
+
+.body-container{
+    margin-top: 70px;
+    width: 100%;
+    height: 90vh;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "login-decoration-container login-decoration-container login-card-container";
+}
+
+.login-decoration-container{
+    grid-area: login-decoration-container;
+}
+
+.login-decoration-container .human{
+    background-image: linear-gradient(rgba(0, 0, 255, 0.26), rgba(255, 255, 255, 0.062)), url("/static/images/pexels-andrea-piacquadio-3764402.jpg");
+    width: 100%;
+    background-color: aqua;
+    height: 90vh;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    /* background-position-x: -10rem; */
+    filter: brightness(100%) contrast(120%);
+}
+
+.login-decoration-container .human h1{
+    padding-top: 1.5rem;
+    font-size: 6rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: -1;
+    overflow: hidden;
+    justify-content: center;
+    top: 50%;
+    transform: rotateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    position: relative;
+}
+
+.login-card-container{
+    grid-area: login-card-container;
+    background-color: #f7fbff;
+    display: flex;
+    height: 90vh    ;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.login-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+
+}
+
+.login-card .login-card-form {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-card .login-card-form .form-item{
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+/* .login-card .login-card-form .form-item input[type="text"]{
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+} */
+
+.password-field, .email-field{
+    position: relative;
+    background-color: var(--white-color);
+    display: flex;
+    padding: 1.35rem 1.25rem;
+    border-radius: 0.5rem;
+    align-items: center;
+    column-gap: .75rem;
+    font-size: 30px;
+}
+
+.password-lock-icon, .toggle-visibility-icon, .user-icon{
+    font-size: 1.25rem;
+    z-index: 1;
+}
+
+.password-lock-icon, .password-input, .user-icon, .email-input{
+    color: var(--container-color);
+}
+
+.toggle-visibility-icon{
+    color: white;
+    cursor: pointer;
+    margin-left: -55px;
+}
+
+.password-input, .email-input{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.password-input::placeholder, .email-input::placeholder{
+    color: var(--text-color);
+}
+
+.password-overlay{
+    width: 32px;
+    height: 32px;
+    background-color: var(--container-color);
+    position: absolute;
+    right: 2.05rem;
+    border-radius: 50%;
+    /* z-index: 1; */
+    transition: .4s ease-in-out;
+}
+
+.overlay-content{
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+    right: 0;
+    background-color: var(--container-color);
+}
+
+.overlay-content ~ .password-lock-icon{
+    color: var(--white-color);
+}
+
+.overlay-content ~ .password-input,
+.overlay-content ~ .password-input::placeholder{
+    color: var(--white-color);
+}
+
+.form-item-other{
+    margin-top: -8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-item-other a{
+    text-decoration: none;
+    color: #5c5c5c;
+    font-size: 13px;
+}
+
+.login-card .login-card-form .button{
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--container-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px rgb(172, 172, 172);
+}
+
+.login-card .login-card-form .button:hover{
+    background-color: var(--container-color-light);
+}
+
+.login-card-social{
+    width: 100%;
+    margin-top: 1.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-card-social .others{
+    color: #5c5c5c;
+    font-size: .513rem;
+    position: relative;
+    /* padding-left: 100px; */
+}
+
+.login-card-social .login-card-social-btns{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 5px;
+}
+
+.login-card-social .login-card-social-btns a {
+    text-decoration: none;
+    color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem 2rem; */
+    width: 6rem;
+    height: 4rem;
+    border-radius: 10px;
+    background-color: #ffffff00;
+    box-shadow: 1px 1px 10px rgb(172, 172, 172);
+    /* border: 2px solid gray; */
+}
+
+.login-card-social .login-card-social-btns a .apple{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+
+.login-card-form .thesignin {
+    padding: 10px 10px;
+    background-color: hsla(240, 100%, 57%, 0.836);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
