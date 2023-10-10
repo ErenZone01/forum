@@ -10,7 +10,7 @@ import (
 
 func CreateBd() *sql.DB {
 	//creer une base de donnée
-	db, err := sql.Open("sqlite3", "Forum.sqlite")
+	db, err := sql.Open("sqlite3", "Forum.db")
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -149,7 +149,7 @@ func NewCategorie(bd *sql.DB, categorie string, post_id int) {
 		return
 	}
 }
-func NewLikeDislikePost(bd *sql.DB, likePost structs.Appreciation_post){
+func NewLikeDislikePost(bd *sql.DB, likePost structs.Appreciation_post) {
 	//Inserer des likes dans notre table Appreciation_post
 	_, err := bd.Exec(`
     INSERT INTO appreciation_post (like, dislike, users_id, posts_id) VALUES (?,?,?,?)`, likePost.Like, likePost.Dislike, likePost.Users_id, likePost.Posts_id)
@@ -158,7 +158,7 @@ func NewLikeDislikePost(bd *sql.DB, likePost structs.Appreciation_post){
 		return
 	}
 }
-func NewLikeDislikeCom(bd *sql.DB, likeCom structs.Appreciation_com){
+func NewLikeDislikeCom(bd *sql.DB, likeCom structs.Appreciation_com) {
 	//Inserer des likes dans notre table Appreciation_post
 	_, err := bd.Exec(`
     INSERT INTO appreciation_com (like, dislike, users_id, coms_id) VALUES (?,?,?,?)`, likeCom.Like, likeCom.Dislike, likeCom.Users_id, likeCom.Coms_id)

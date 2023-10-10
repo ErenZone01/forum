@@ -27,7 +27,7 @@ func CreatePost(w http.ResponseWriter, r *http.Request, Newuser structs.Users) b
 	post.Users_id = Newuser.Id
 	bd.NewPost(BD, post)
 	var post_bd, _ = bd.DataAllPost(BD)
-	var newPost = post_bd[len(post_bd)-1]
+	var newPost = post_bd[0]
 	for _, v := range Allcategorie{
 		if IsValid(v){
 			addCategorie(BD, v, newPost.Id)
